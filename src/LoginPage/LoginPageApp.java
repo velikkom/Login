@@ -1,14 +1,13 @@
 package LoginPage;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import static LoginPage.Service.*;
 import static LoginPage.User.*;
 
 
@@ -43,10 +42,19 @@ Project: Bir siteye üye olma ve giriş yapma sayfası tasarlayınız.
                             : en az bir tane sembol içermeli
 */
 
-
+   static DataBase dataBase= new DataBase();
     static HashMap<String, User> users = new HashMap<>();
+    /*List<User> list = new ArrayList<>();
+
+    public void setList(List<User> list) {
+        this.list = list;
+    }*/
 
     public static void main(String[] args) {
+
+        List<User> list = new ArrayList<>(Arrays.asList(dataBase.user1,dataBase.user2,dataBase.user3,dataBase.user4,dataBase.user5));
+        System.out.println(list);
+
         // Add fake users
         addFakeUsers();
 
@@ -97,7 +105,9 @@ Project: Bir siteye üye olma ve giriş yapma sayfası tasarlayınız.
             User newUser = new User(name, surname, email, password);
             users.put(email, newUser);
             System.out.println("Registration successful.");
-            System.out.println(email+""+newUser);
+            /*System.out.println(email+""+newUser);*/
+            System.out.println(users);
+            System.out.println("users size = " + users.size());
         }
     }
 
